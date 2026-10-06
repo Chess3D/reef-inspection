@@ -1,0 +1,7 @@
+# Docker Setup
+
+First create a bash history file via `touch .bash_history`
+
+Then build the Dockerfile and start the docker-compose with `MY_UID=$(id -u) MY_GID=$(id -g) docker compose up -d --build`
+
+Finally attach to the running container with `docker compose exec ros-humble-dev bash`

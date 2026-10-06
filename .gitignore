@@ -1,0 +1,68 @@
+# ==========================================
+# Docker & Environment
+# ==========================================
+.bash_history
+
+# ==========================================
+# ROS 2 Workspace (colcon build artifacts)
+# ==========================================
+# We only want to track the source code in ros_ws/src/
+# colcon generates these directories when building
+ros_ws/build/
+ros_ws/install/
+ros_ws/log/
+
+# ==========================================
+# Python
+# ==========================================
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+*.egg-info/
+.eggs/
+.pytest_cache/
+
+# ==========================================
+# C / C++ / CMake
+# ==========================================
+# Compiled Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# CMake specific files
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
+install_manifest.txt
+compile_commands.json
+
+# ==========================================
+# OS & IDE Files (VSCode, vim, macOS, etc.)
+# ==========================================
+.DS_Store
+.vscode/
+*.swp
+*.swo
+*~

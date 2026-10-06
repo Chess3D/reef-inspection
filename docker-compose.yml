@@ -1,0 +1,45 @@
+services:
+  ros-humble-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+      args:
+        - USER_UID=${MY_UID:-1000}
+        - USER_GID=${MY_GID:-1000}
+        
+    container_name: ros2_humble_dev
+    
+    network_mode: "host"
+    ipc: "host"
+    pid: "host"
+    
+    stdin_open: true
+    tty: true
+    
+    volumes:
+      - ./ros_ws:/ros_ws
+      
+      # Bash history persistence
+      - ./.bash_history:/home/rosdev/.bash_history
+      
+      # X11 Socket and Authentication
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - ${HOME}/.Xauthority:/home/rosdev/.Xauthority:ro
+      
+      # Wayland Socket
+      - ${XDG_RUNTIME_DIR:-/run/user/1000}:${XDG_RUNTIME_DIR:-/run/user/1000}:rw
+      
+    working_dir: /ros_ws
+    
+    environment:
+      - ROS_DOMAIN_ID=0
+      
+      # X11 Environment
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+      
+      # Wayland Environment
+      - WAYLAND_DISPLAY=${WAYLAND_DISPLAY}
+      - XDG_RUNTIME_DIR=${XDG_RUNTIME_DIR:-/run/user/1000}
+    
+    command: bash
